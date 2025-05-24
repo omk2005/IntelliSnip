@@ -1,0 +1,690 @@
+{
+  "addBinaryStrings": {
+    "description": "Add two binary strings and return the result as a binary string, useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static String addBinaryStrings(String a, String b) {\n        int num1 = Integer.parseInt(a, 2);\n        int num2 = Integer.parseInt(b, 2);\n        return Integer.toBinaryString(num1 + num2);\n    }\n}"
+  },
+  "angularVelocity": {
+    "description": "Calculate angular velocity using omega = theta / t (physics).",
+    "code": "public class PhysicsUtils {\n    public static double angularVelocity(double theta, double t) {\n        if (t == 0) throw new IllegalArgumentException(\"Time cannot be zero\");\n        return theta / t;\n    }\n}"
+  },
+  "avogadroNumber": {
+    "description": "Calculate the number of particles using N = n * NA (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double avogadroNumber(double moles, double NA) {\n        return moles * NA;\n    }\n    public static double avogadroNumber(double moles) {\n        return avogadroNumber(moles, 6.02214076e23);\n    }\n}"
+  },
+  "balanceEquation": {
+    "description": "Balance a simple chemical equation (e.g., 'H2 + O2 -> H2O') by returning coefficients.",
+    "code": "public class ChemistryUtils {\n    public static java.util.Map<String, Integer> balanceEquation(String equation) {\n        java.util.Map<String, Integer> result = new java.util.HashMap<>();\n        String[] parts = equation.split(\" -> \");\n        String reactants = parts[0], products = parts[1];\n        if (reactants.equals(\"H2 + O2\") && products.equals(\"H2O\")) {\n            result.put(\"H2\", 2);\n            result.put(\"O2\", 1);\n            result.put(\"H2O\", 2);\n            return result;\n        }\n        throw new UnsupportedOperationException(\"Only H2 + O2 -> H2O is supported\");\n    }\n}"
+  },
+  "base64Decode": {
+    "description": "Decode a Base64 string, useful for mobile app data transfer.",
+    "code": "public class EncodingUtils {\n    public static String base64Decode(String s) {\n        return new String(java.util.Base64.getDecoder().decode(s));\n    }\n}"
+  },
+  "base64Encode": {
+    "description": "Encode a string to Base64, useful for mobile app data transfer.",
+    "code": "public class EncodingUtils {\n    public static String base64Encode(String s) {\n        return java.util.Base64.getEncoder().encodeToString(s.getBytes());\n    }\n}"
+  },
+  "batchProcess": {
+    "description": "Process a list in batches with a custom function.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public interface ProcessFunction<T> {\n        List<T> process(List<T> batch);\n    }\n\n    public static <T> List<T> batchProcess(List<T> list, int batchSize, ProcessFunction<T> processFunc) {\n        List<T> results = new ArrayList<>();\n        for (int i = 0; i < list.size(); i += batchSize) {\n            List<T> batch = list.subList(i, Math.min(i + batchSize, list.size()));\n            results.addAll(processFunc.process(batch));\n        }\n        return results;\n    }\n}"
+  },
+  "binarySearch": {
+    "description": "Perform binary search on a sorted array.",
+    "code": "public class SearchUtils {\n    public static int binarySearch(int[] arr, int target) {\n        int left = 0, right = arr.length - 1;\n        while (left <= right) {\n            int mid = (left + right) / 2;\n            if (arr[mid] == target) return mid;\n            else if (arr[mid] < target) left = mid + 1;\n            else right = mid - 1;\n        }\n        return -1;\n    }\n}"
+  },
+  "binaryToDecimal": {
+    "description": "Convert a binary string to decimal number.",
+    "code": "public class BinaryConverter {\n    public static int binaryToDecimal(String binary) {\n        return Integer.parseInt(binary, 2);\n    }\n}"
+  },
+  "bitCount": {
+    "description": "Count the number of 1s in the binary representation of a number, useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int bitCount(int n) {\n        return Integer.bitCount(n);\n    }\n}"
+  },
+  "bitFlip": {
+    "description": "Flip all bits in a number (0 to 1, 1 to 0), useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int bitFlip(int n, int bits) {\n        return n ^ ((1 << bits) - 1);\n    }\n    public static int bitFlip(int n) {\n        return bitFlip(n, 32);\n    }\n}"
+  },
+  "bitwiseAnd": {
+    "description": "Perform a bitwise AND operation, useful for low-level programming like assembly.",
+    "code": "public class BinaryUtils {\n    public static int bitwiseAnd(int a, int b) {\n        return a & b;\n    }\n}"
+  },
+  "bitwiseNot": {
+    "description": "Perform a bitwise NOT operation on a number, useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int bitwiseNot(int a) {\n        return ~a;\n    }\n}"
+  },
+  "bitwiseOr": {
+    "description": "Perform a bitwise OR operation, useful for low-level programming like assembly.",
+    "code": "public class BinaryUtils {\n    public static int bitwiseOr(int a, int b) {\n        return a | b;\n    }\n}"
+  },
+  "bitwiseXor": {
+    "description": "Perform a bitwise XOR operation, useful for low-level programming like assembly.",
+    "code": "public class BinaryUtils {\n    public static int bitwiseXor(int a, int b) {\n        return a ^ b;\n    }\n}"
+  },
+  "boilingPointElevation": {
+    "description": "Calculate boiling point elevation using delta_T = Kb * m (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double boilingPointElevation(double kb, double m) {\n        return kb * m;\n    }\n}"
+  },
+  "byteToBits": {
+    "description": "Convert a byte (integer 0-255) to its 8-bit binary string representation.",
+    "code": "public class BinaryUtils {\n    public static String byteToBits(int byteVal) {\n        if (byteVal < 0 || byteVal > 255) throw new IllegalArgumentException(\"Byte must be between 0 and 255\");\n        return String.format(\"%8s\", Integer.toBinaryString(byteVal)).replace(' ', '0');\n    }\n}"
+  },
+  "calculateDistance": {
+    "description": "Calculate the Euclidean distance between two points, useful for gaming.",
+    "code": "public class GeometryUtils {\n    public static double calculateDistance(double x1, double y1, double x2, double y2) {\n        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));\n    }\n}"
+  },
+  "camelToSnake": {
+    "description": "Convert a camelCase string to snake_case.",
+    "code": "public class StringUtils {\n    public static String camelToSnake(String s) {\n        StringBuilder result = new StringBuilder();\n        for (int i = 0; i < s.length(); i++) {\n            char ch = s.charAt(i);\n            if (Character.isUpperCase(ch) && i > 0) {\n                result.append('_');\n            }\n            result.append(Character.toLowerCase(ch));\n        }\n        return result.toString();\n    }\n}"
+  },
+  "capacitance": {
+    "description": "Calculate capacitance using C = Q / V (physics).",
+    "code": "public class PhysicsUtils {\n    public static double capacitance(double q, double v) {\n        if (v == 0) throw new IllegalArgumentException(\"Voltage cannot be zero\");\n        return q / v;\n    }\n}"
+  },
+  "centripetalForce": {
+    "description": "Calculate centripetal force using F = m * v^2 / r (physics).",
+    "code": "public class PhysicsUtils {\n    public static double centripetalForce(double m, double v, double r) {\n        if (r == 0) throw new IllegalArgumentException(\"Radius cannot be zero\");\n        return m * v * v / r;\n    }\n}"
+  },
+  "checkEvenOdd": {
+    "description": "Check if a number is even or odd using bitwise operations, inspired by assembly.",
+    "code": "public class NumberUtils {\n    public static String checkEvenOdd(int n) {\n        return (n & 1) == 0 ? \"even\" : \"odd\";\n    }\n}"
+  },
+  "checkPalindrome": {
+    "description": "Check if a string is a palindrome.",
+    "code": "public class StringUtils {\n    public static boolean checkPalindrome(String s) {\n        String normalized = s.toLowerCase().replaceAll(\"[^a-z0-9]\", \"\");\n        int left = 0, right = normalized.length() - 1;\n        while (left < right) {\n            if (normalized.charAt(left) != normalized.charAt(right)) return false;\n            left++;\n            right--;\n        }\n        return true;\n    }\n}"
+  },
+  "chunkList": {
+    "description": "Split a list into chunks of a specified size.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> List<List<T>> chunkList(List<T> list, int chunkSize) {\n        List<List<T>> chunks = new ArrayList<>();\n        for (int i = 0; i < list.size(); i += chunkSize) {\n            chunks.add(new ArrayList<>(list.subList(i, Math.min(i + chunkSize, list.size()))));\n        }\n        return chunks;\n    }\n}"
+  },
+  "clearBit": {
+    "description": "Clear a specific bit in a number to 0, useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int clearBit(int n, int position) {\n        return n & ~(1 << position);\n    }\n}"
+  },
+  "collisionDetection": {
+    "description": "Check for collision between two rectangles, useful for gaming.",
+    "code": "public class GameUtils {\n    public static boolean collisionDetection(double[] rect1, double[] rect2) {\n        double x1 = rect1[0], y1 = rect1[1], w1 = rect1[2], h1 = rect1[3];\n        double x2 = rect2[0], y2 = rect2[1], w2 = rect2[2], h2 = rect2[3];\n        return x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2;\n    }\n}"
+  },
+  "combination": {
+    "description": "Calculate the number of combinations C(n, k).",
+    "code": "public class MathUtils {\n    public static long combination(int n, int k) {\n        if (k > n) return 0;\n        if (k == 0) return 1;\n        k = Math.min(k, n - k);\n        long c = 1;\n        for (int i = 0; i < k; i++) {\n            c = c * (n - i) / (i + 1);\n        }\n        return c;\n    }\n}"
+  },
+  "countCharFrequency": {
+    "description": "Count the frequency of each character in a string.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static Map<Character, Integer> countCharFrequency(String s) {\n        Map<Character, Integer> freq = new HashMap<>();\n        for (char c : s.toCharArray()) {\n            freq.put(c, freq.getOrDefault(c, 0) + 1);\n        }\n        return freq;\n    }\n}"
+  },
+  "countWords": {
+    "description": "Count the frequency of each word in a string.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static Map<String, Integer> countWords(String s) {\n        String[] words = s.split(\"\\\\s+\");\n        Map<String, Integer> freq = new HashMap<>();\n        for (String word : words) {\n            freq.put(word, freq.getOrDefault(word, 0) + 1);\n        }\n        return freq;\n    }\n}"
+  },
+  "coulombForce": {
+    "description": "Calculate Coulomb force between two charges using F = k * |q1 * q2| / r^2 (physics).",
+    "code": "public class PhysicsUtils {\n    public static double coulombForce(double q1, double q2, double r, double k) {\n        if (r == 0) throw new IllegalArgumentException(\"Distance cannot be zero\");\n        return k * Math.abs(q1 * q2) / (r * r);\n    }\n    public static double coulombForce(double q1, double q2, double r) {\n        return coulombForce(q1, q2, r, 8.9875517923e9);\n    }\n}"
+  },
+  "csvToDict": {
+    "description": "Convert a CSV file to a list of dictionaries.",
+    "code": "import java.io.*;\nimport java.util.*;\n\npublic class FileUtils {\n    public static List<Map<String, String>> csvToDict(String filePath) throws IOException {\n        List<Map<String, String>> result = new ArrayList<>();\n        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {\n            String[] headers = br.readLine().split(\",\");\n            String line;\n            while ((line = br.readLine()) != null) {\n                String[] values = line.split(\",\");\n                Map<String, String> row = new HashMap<>();\n                for (int i = 0; i < headers.length; i++) {\n                    row.put(headers[i], i < values.length ? values[i] : \"\");\n                }\n                result.add(row);\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "csvToList": {
+    "description": "Read a CSV file into a list of lists.",
+    "code": "import java.io.*;\nimport java.util.*;\n\npublic class FileUtils {\n    public static List<List<String>> csvToList(String filePath) throws IOException {\n        List<List<String>> result = new ArrayList<>();\n        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {\n            String line;\n            while ((line = br.readLine()) != null) {\n                result.add(Arrays.asList(line.split(\",\")));\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "dateDifference": {
+    "description": "Calculate the difference between two dates.",
+    "code": "import java.time.*;\nimport java.time.format.*;\n\npublic class DateUtils {\n    public static long dateDifference(String date1, String date2, String format) {\n        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);\n        LocalDate d1 = LocalDate.parse(date1, formatter);\n        LocalDate d2 = LocalDate.parse(date2, formatter);\n        return Math.abs(Duration.between(d1.atStartOfDay(), d2.atStartOfDay()).toDays());\n    }\n    public static long dateDifference(String date1, String date2) {\n        return dateDifference(date1, date2, \"yyyy-MM-dd\");\n    }\n}"
+  },
+  "daysBetweenDates": {
+    "description": "Calculate the number of days between two dates using datetime.",
+    "code": "import java.time.*;\nimport java.time.format.*;\n\npublic class DateUtils {\n    public static long daysBetweenDates(String date1, String date2) {\n        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(\"yyyy-MM-dd\");\n        LocalDate d1 = LocalDate.parse(date1, formatter);\n        LocalDate d2 = LocalDate.parse(date2, formatter);\n        return Math.abs(Duration.between(d1.atStartOfDay(), d2.atStartOfDay()).toDays());\n    }\n}"
+  },
+  "decimalToBinary": {
+    "description": "Convert a decimal number to binary string.",
+    "code": "public class NumberConverter {\n    public static String decimalToBinary(int n) {\n        if (n == 0) return \"0\";\n        return Integer.toBinaryString(n);\n    }\n}"
+  },
+  "decimalToHex": {
+    "description": "Convert a decimal number to hexadecimal string (without '0x' prefix).",
+    "code": "public class NumberConverter {\n    public static String decimalToHex(int n) {\n        if (n == 0) return \"0\";\n        return Integer.toHexString(n);\n    }\n}"
+  },
+  "decimalToOctal": {
+    "description": "Convert a decimal number to octal string.",
+    "code": "public class NumberConverter {\n    public static String decimalToOctal(int n) {\n        if (n == 0) return \"0\";\n        return Integer.toOctalString(n);\n    }\n}"
+  },
+  "deepCopy": {
+    "description": "Create a deep copy of a list or dictionary using recursion.",
+    "code": "import java.util.*;\n\npublic class ObjectUtils {\n    public static Object deepCopy(Object obj) {\n        if (obj instanceof List) {\n            List<?> list = (List<?>) obj;\n            List<Object> copy = new ArrayList<>();\n            for (Object item : list) {\n                copy.add(deepCopy(item));\n            }\n            return copy;\n        } else if (obj instanceof Map) {\n            Map<?, ?> map = (Map<?, ?>) obj;\n            Map<Object, Object> copy = new HashMap<>();\n            for (Map.Entry<?, ?> entry : map.entrySet()) {\n                copy.put(deepCopy(entry.getKey()), deepCopy(entry.getValue()));\n            }\n            return copy;\n        }\n        return obj;\n    }\n}"
+  },
+  "derivative": {
+    "description": "Approximate the derivative of a function at a point using central difference.",
+    "code": "public class MathUtils {\n    public interface Function {\n        double apply(double x);\n    }\n\n    public static double derivative(Function f, double x, double h) {\n        return (f.apply(x + h) - f.apply(x - h)) / (2 * h);\n    }\n    public static double derivative(Function f, double x) {\n        return derivative(f, x, 1e-5);\n    }\n}"
+  },
+  "determinant2x2": {
+    "description": "Calculate the determinant of a 2x2 matrix.",
+    "code": "public class MatrixUtils {\n    public static double determinant2x2(double[][] mat) {\n        if (mat.length != 2 || mat[0].length != 2) throw new IllegalArgumentException(\"Matrix must be 2x2\");\n        return mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0];\n    }\n}"
+  },
+  "determinant3x3": {
+    "description": "Calculate the determinant of a 3x3 matrix using cofactor expansion.",
+    "code": "public class MatrixUtils {\n    public static double determinant3x3(double[][] mat) {\n        if (mat.length != 3 || mat[0].length != 3) throw new IllegalArgumentException(\"Matrix must be 3x3\");\n        return mat[0][0] * (mat[1][1] * mat[2][2] - mat[1][2] * mat[2][1])\n             - mat[0][1] * (mat[1][0] * mat[2][2] - mat[1][2] * mat[2][0])\n             + mat[0][2] * (mat[1][0] * mat[2][1] - mat[1][1] * mat[2][0]);\n    }\n}"
+  },
+  "dictToJsonFile": {
+    "description": "Write a dictionary to a JSON file.",
+    "code": "import java.io.*;\nimport com.google.gson.Gson;\n\npublic class FileUtils {\n    public static void dictToJsonFile(Map<String, Object> data, String filePath) throws IOException {\n        Gson gson = new Gson();\n        try (FileWriter writer = new FileWriter(filePath)) {\n            gson.toJson(data, writer);\n        }\n    }\n}"
+  },
+  "displacement": {
+    "description": "Calculate displacement using s = ut + (1/2)at^2 (physics kinematics).",
+    "code": "public class PhysicsUtils {\n    public static double displacement(double u, double a, double t) {\n        return u * t + 0.5 * a * t * t;\n    }\n}"
+  },
+  "electricField": {
+    "description": "Calculate electric field using E = k * q / r^2 (physics).",
+    "code": "public class PhysicsUtils {\n    public static double electricField(double q, double r, double k) {\n        if (r == 0) throw new IllegalArgumentException(\"Distance cannot be zero\");\n        return k * q / (r * r);\n    }\n    public static double electricField(double q, double r) {\n        return electricField(q, r, 8.9875517923e9);\n    }\n}"
+  },
+  "equilibriumConstant": {
+    "description": "Calculate the equilibrium constant Kc for a reaction aA + bB -> cC + dD.",
+    "code": "public class ChemistryUtils {\n    public static double equilibriumConstant(double cC, double cD, double cA, double cB, int a, int b, int c, int d) {\n        return (Math.pow(cC, c) * Math.pow(cD, d)) / (Math.pow(cA, a) * Math.pow(cB, b));\n    }\n}"
+  },
+  "eulerTotient": {
+    "description": "Calculate Euler's totient function for a number, counting numbers coprime to n.",
+    "code": "public class MathUtils {\n    public static int eulerTotient(int n) {\n        int result = n;\n        int p = 2;\n        while (p * p <= n) {\n            if (n % p == 0) {\n                while (n % p == 0) n /= p;\n                result -= result / p;\n            }\n            p++;\n        }\n        if (n > 1) result -= result / n;\n        return result;\n    }\n}"
+  },
+  "executor_service": {
+    "description": "Use ExecutorService to run multiple threads.",
+    "code": "ExecutorService executor = Executors.newFixedThreadPool(2);\nexecutor.submit(() -> System.out.println(\"Task 1\"));\nexecutor.submit(() -> System.out.println(\"Task 2\"));\nexecutor.shutdown();"
+  },
+  "extractDigits": {
+    "description": "Extract all digits from a string into a list.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static List<Integer> extractDigits(String s) {\n        List<Integer> digits = new ArrayList<>();\n        for (char c : s.toCharArray()) {\n            if (Character.isDigit(c)) {\n                digits.add(Character.getNumericValue(c));\n            }\n        }\n        return digits;\n    }\n}"
+  },
+  "factorial": {
+    "description": "Calculate the factorial of a number.",
+    "code": "public class MathUtils {\n    public static long factorial(int n) {\n        if (n < 0) throw new IllegalArgumentException(\"Factorial is not defined for negative numbers\");\n        if (n == 0) return 1;\n        return n * factorial(n - 1);\n    }\n}"
+  },
+  "factoryPattern": {
+    "description": "Implement a factory pattern for creating objects in OOP.",
+    "code": "public interface Shape {\n    String draw();\n}\n\npublic class Circle implements Shape {\n    @Override\n    public String draw() {\n        return \"Drawing a circle\";\n    }\n}\n\npublic class Square implements Shape {\n    @Override\n    public String draw() {\n        return \"Drawing a square\";\n    }\n}\n\npublic class ShapeFactory {\n    public static Shape shapeFactory(String shapeType) {\n        switch (shapeType.toLowerCase()) {\n            case \"circle\":\n                return new Circle();\n            case \"square\":\n                return new Square();\n            default:\n                return null;\n        }\n    }\n}"
+  },
+  "fibonacciSequence": {
+    "description": "Generate the Fibonacci sequence up to n terms.",
+    "code": "import java.util.*;\n\npublic class MathUtils {\n    public static List<Long> fibonacciSequence(int n) {\n        List<Long> sequence = new ArrayList<>();\n        long a = 0, b = 1;\n        for (int i = 0; i < n; i++) {\n            sequence.add(a);\n            long next = a + b;\n            a = b;\n            b = next;\n        }\n        return sequence;\n    }\n}"
+  },
+  "findAllSubstrings": {
+    "description": "Find all occurrences of a substring in a string.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static List<Integer> findAllSubstrings(String string, String sub) {\n        List<Integer> indices = new ArrayList<>();\n        int start = 0;\n        while (true) {\n            start = string.indexOf(sub, start);\n            if (start == -1) break;\n            indices.add(start);\n            start++;\n        }\n        return indices;\n    }\n}"
+  },
+  "findCommonElements": {
+    "description": "Find common elements between two lists.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> List<T> findCommonElements(List<T> list1, List<T> list2) {\n        Set<T> set1 = new HashSet<>(list1);\n        Set<T> set2 = new HashSet<>(list2);\n        set1.retainAll(set2);\n        return new ArrayList<>(set1);\n    }\n}"
+  },
+  "findDuplicates": {
+    "description": "Find duplicates in a list using only standard library.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> List<T> findDuplicates(List<T> list) {\n        Set<T> seen = new HashSet<>();\n        Set<T> duplicates = new HashSet<>();\n        for (T item : list) {\n            if (!seen.add(item)) {\n                duplicates.add(item);\n            }\n        }\n        return new ArrayList<>(duplicates);\n    }\n}"
+  },
+  "findFileInDir": {
+    "description": "Find all files with a specific extension in a directory.",
+    "code": "import java.io.*;\nimport java.util.*;\n\npublic class FileUtils {\n    public static List<String> findFileInDir(String directory, String extension) {\n        File dir = new File(directory);\n        List<String> files = new ArrayList<>();\n        for (File file : dir.listFiles()) {\n            if (file.isFile() && file.getName().endsWith(extension)) {\n                files.add(file.getName());\n            }\n        }\n        return files;\n    }\n}"
+  },
+  "findMissingNumbers": {
+    "description": "Find missing numbers in a list within a range.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static List<Integer> findMissingNumbers(List<Integer> list, int start, int end) {\n        Set<Integer> set = new HashSet<>(list);\n        List<Integer> missing = new ArrayList<>();\n        for (int num = start; num <= end; num++) {\n            if (!set.contains(num)) {\n                missing.add(num);\n            }\n        }\n        return missing;\n    }\n}"
+  },
+  "flattenList": {
+    "description": "Flatten a nested list into a single-level list.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static List<Object> flattenList(List<?> nestedList) {\n        List<Object> flatList = new ArrayList<>();\n        for (Object item : nestedList) {\n            if (item instanceof List) {\n                flatList.addAll(flattenList((List<?>) item));\n            } else {\n                flatList.add(item);\n            }\n        }\n        return flatList;\n    }\n}"
+  },
+  "formatDate": {
+    "description": "Format a date in a specific way.",
+    "code": "import java.time.*;\nimport java.time.format.*;\n\npublic class DateUtils {\n    public static String formatDate(String date, String inputFormat, String outputFormat) {\n        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern(inputFormat);\n        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(outputFormat);\n        LocalDate d = LocalDate.parse(date, inputFormatter);\n        return d.format(outputFormatter);\n    }\n    public static String formatDate(String date) {\n        return formatDate(date, \"yyyy-MM-dd\", \"dd/MM/yyyy\");\n    }\n}"
+  },
+  "frameRateLimiter": {
+    "description": "Limit the frame rate in a game loop to control speed.",
+    "code": "public class GameUtils {\n    public static class FrameRateLimiter {\n        private final double frameTime;\n        private long lastTime;\n\n        public FrameRateLimiter(double targetFps) {\n            this.frameTime = 1.0 / targetFps;\n            this.lastTime = System.nanoTime();\n        }\n\n        public void limit() {\n            long currentTime = System.nanoTime();\n            double sleepTime = frameTime - (currentTime - lastTime) / 1_000_000_000.0;\n            if (sleepTime > 0) {\n                try {\n                    Thread.sleep((long) (sleepTime * 1000));\n                } catch (InterruptedException e) {\n                    Thread.currentThread().interrupt();\n                }\n            }\n            lastTime = System.nanoTime();\n        }\n    }\n}"
+  },
+  "freezingPointDepression": {
+    "description": "Calculate freezing point depression using delta_T = Kf * m (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double freezingPointDepression(double kf, double m) {\n        return kf * m;\n    }\n}"
+  },
+  "frequency": {
+    "description": "Calculate frequency using f = 1 / T (physics).",
+    "code": "public class PhysicsUtils {\n    public static double frequency(double period) {\n        if (period == 0) throw new IllegalArgumentException(\"Period cannot be zero\");\n        return 1.0 / period;\n    }\n}"
+  },
+  "future_result": {
+    "description": "Run a task and retrieve a result using Future.",
+    "code": "ExecutorService executor = Executors.newSingleThreadExecutor();\nFuture<Integer> future = executor.submit(() -> {\n    Thread.sleep(1000);\n    return 42;\n});\ntry {\n    Integer result = future.get();\n    System.out.println(\"Result: \" + result);\n} catch (InterruptedException | ExecutionException e) {\n    e.printStackTrace();\n}\nexecutor.shutdown();"
+  },
+  "gaussianElimination": {
+    "description": "Solve a system of linear equations using Gaussian elimination.",
+    "code": "public class MatrixUtils {\n    public static double[] gaussianElimination(double[][] A, double[] b) {\n        int n = A.length;\n        for (int i = 0; i < n; i++) {\n            double pivot = A[i][i];\n            if (pivot == 0) throw new ArithmeticException(\"Pivot is zero\");\n            for (int j = i + 1; j < n; j++) {\n                double factor = A[j][i] / pivot;\n                for (int k = i; k < n; k++) {\n                    A[j][k] -= factor * A[i][k];\n                }\n                b[j] -= factor * b[i];\n            }\n        }\n        double[] x = new double[n];\n        for (int i = n - 1; i >= 0; i--) {\n            x[i] = b[i];\n            for (int j = i + 1; j < n; j++) {\n                x[i] -= A[i][j] * x[j];\n            }\n            x[i] /= A[i][i];\n        }\n        return x;\n    }\n}"
+  },
+  "gcd": {
+    "description": "Calculate the greatest common divisor using Euclid's algorithm.",
+    "code": "public class MathUtils {\n    public static int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return Math.abs(a);\n    }\n}"
+  },
+  "generateCombinations": {
+    "description": "Generate all combinations of a list of a given size using recursion.",
+    "code": "import java.util.*;\n\npublic class MathUtils {\n    public static <T> List<List<T>> generateCombinations(List<T> arr, int r) {\n        List<List<T>> result = new ArrayList<>();\n        if (r == 0) {\n            result.add(new ArrayList<>());\n            return result;\n        }\n        if (r > arr.size()) return result;\n        for (int i = 0; i < arr.size(); i++) {\n            T current = arr.get(i);\n            List<T> remaining = new ArrayList<>(arr.subList(i + 1, arr.size()));\n            for (List<T> subComb : generateCombinations(remaining, r - 1)) {\n                List<T> newComb = new ArrayList<>();\n                newComb.add(current);\n                newComb.addAll(subComb);\n                result.add(newComb);\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "generatePermutations": {
+    "description": "Generate all permutations of a list using recursion.",
+    "code": "import java.util.*;\n\npublic class MathUtils {\n    public static <T> List<List<T>> generatePermutations(List<T> arr) {\n        List<List<T>> result = new ArrayList<>();\n        if (arr.size() <= 1) {\n            result.add(new ArrayList<>(arr));\n            return result;\n        }\n        for (int i = 0; i < arr.size(); i++) {\n            T current = arr.get(i);\n            List<T> remaining = new ArrayList<>(arr);\n            remaining.remove(i);\n            for (List<T> perm : generatePermutations(remaining)) {\n                List<T> newPerm = new ArrayList<>();\n                newPerm.add(current);\n                newPerm.addAll(perm);\n                result.add(newPerm);\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "generateUuid": {
+    "description": "Generate a random UUID string.",
+    "code": "import java.util.UUID;\n\npublic class StringUtils {\n    public static String generateUuid() {\n        return UUID.randomUUID().toString();\n    }\n}"
+  },
+  "getBit": {
+    "description": "Get the value of a specific bit in a number (0 or 1), useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int getBit(int n, int position) {\n        return (n >> position) & 1;\n    }\n}"
+  },
+  "getFileSize": {
+    "description": "Get the size of a file in bytes.",
+    "code": "import java.io.*;\n\npublic class FileUtils {\n    public static long getFileSize(String filePath) throws IOException {\n        return new File(filePath).length();\n    }\n}"
+  },
+  "gravitationalForce": {
+    "description": "Calculate gravitational force between two masses using F = G * (m1 * m2) / r^2 (physics).",
+    "code": "public class PhysicsUtils {\n    public static double gravitationalForce(double m1, double m2, double r, double G) {\n        if (r == 0) throw new IllegalArgumentException(\"Distance cannot be zero\");\n        return G * (m1 * m2) / (r * r);\n    }\n    public static double gravitationalForce(double m1, double m2, double r) {\n        return gravitationalForce(m1, m2, r, 6.67430e-11);\n    }\n}"
+  },
+  "groupByKey": {
+    "description": "Group a list of dictionaries by a specific key.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static Map<String, List<Map<String, Object>>> groupByKey(List<Map<String, Object>> list, String key) {\n        Map<String, List<Map<String, Object>>> grouped = new HashMap<>();\n        for (Map<String, Object> item : list) {\n            String groupKey = (String) item.get(key);\n            grouped.computeIfAbsent(groupKey, k -> new ArrayList<>()).add(item);\n        }\n        return grouped;\n    }\n}"
+  },
+  "halfLife": {
+    "description": "Calculate the half-life of a substance using t_half = ln(2) / k (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double halfLife(double k) {\n        if (k <= 0) throw new IllegalArgumentException(\"Decay constant must be positive\");\n        return Math.log(2) / k;\n    }\n}"
+  },
+  "hashPassword": {
+    "description": "Hash a password using SHA-256 for secure storage.",
+    "code": "import java.security.*;\n\npublic class SecurityUtils {\n    public static String hashPassword(String password) throws NoSuchAlgorithmException {\n        MessageDigest digest = MessageDigest.getInstance(\"SHA-256\");\n        byte[] hash = digest.digest(password.getBytes());\n        StringBuilder hexString = new StringBuilder();\n        for (byte b : hash) {\n            String hex = Integer.toHexString(0xff & b);\n            if (hex.length() == 1) hexString.append('0');\n            hexString.append(hex);\n        }\n        return hexString.toString();\n    }\n}"
+  },
+  "hexToDecimal": {
+    "description": "Convert a hexadecimal string to decimal number.",
+    "code": "public class NumberConverter {\n    public static int hexToDecimal(String hexStr) {\n        return Integer.parseInt(hexStr, 16);\n    }\n}"
+  },
+  "humanReadableSize": {
+    "description": "Convert bytes to a human-readable size (e.g., KB, MB).",
+    "code": "public class FileUtils {\n    public static String humanReadableSize(long sizeBytes) {\n        String[] units = {\"B\", \"KB\", \"MB\", \"GB\", \"TB\"};\n        int unitIndex = 0;\n        double size = sizeBytes;\n        while (size >= 1024 && unitIndex < units.length - 1) {\n            size /= 1024;\n            unitIndex++;\n        }\n        return String.format(\"%.2f %s\", size, units[unitIndex]);\n    }\n}"
+  },
+  "hydrogenFromPh": {
+    "description": "Calculate hydrogen ion concentration from pH (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double hydrogenFromPh(double ph) {\n        return Math.pow(10, -ph);\n    }\n}"
+  },
+  "idealGasLaw": {
+    "description": "Calculate pressure using the ideal gas law P = nRT / V (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double idealGasLaw(double n, double T, double V, double R) {\n        if (V == 0) throw new IllegalArgumentException(\"Volume cannot be zero\");\n        return (n * R * T) / V;\n    }\n    public static double idealGasLaw(double n, double T, double V) {\n        return idealGasLaw(n, T, V, 8.314);\n    }\n}"
+  },
+  "integrateSimpson": {
+    "description": "Approximate the definite integral of a function using Simpson's rule.",
+    "code": "public class MathUtils {\n    public interface Function {\n        double apply(double x);\n    }\n\n    public static double integrateSimpson(Function f, double a, double b, int n) {\n        if (n % 2 != 0) throw new IllegalArgumentException(\"n must be even\");\n        double h = (b - a) / n;\n        double result = f.apply(a) + f.apply(b);\n        for (int i = 1; i < n; i += 2) {\n            result += 4 * f.apply(a + i * h);\n        }\n        for (int i = 2; i < n - 1; i += 2) {\n            result += 2 * f.apply(a + i * h);\n        }\n        return result * h / 3;\n    }\n}"
+  },
+  "inverse2x2": {
+    "description": "Calculate the inverse of a 2x2 matrix if it exists.",
+    "code": "public class MatrixUtils {\n    public static double[][] inverse2x2(double[][] mat) {\n        if (mat.length != 2 || mat[0].length != 2) throw new IllegalArgumentException(\"Matrix must be 2x2\");\n        double det = mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0];\n        if (det == 0) throw new ArithmeticException(\"Matrix is not invertible\");\n        double invDet = 1 / det;\n        return new double[][] {\n            {mat[1][1] * invDet, -mat[0][1] * invDet},\n            {-mat[1][0] * invDet, mat[0][0] * invDet}\n        };\n    }\n}"
+  },
+  "invertDict": {
+    "description": "Invert a dictionary, mapping values to keys (assumes unique values).",
+    "code": "import java.util.*;\n\npublic class MapUtils {\n    public static <K, V> Map<V, K> invertDict(Map<K, V> map) {\n        Map<V, K> inverted = new HashMap<>();\n        for (Map.Entry<K, V> entry : map.entrySet()) {\n            inverted.put(entry.getValue(), entry.getKey());\n        }\n        return inverted;\n    }\n}"
+  },
+  "isAnagram": {
+    "description": "Check if two strings are anagrams.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static boolean isAnagram(String s1, String s2) {\n        if (s1.length() != s2.length()) return false;\n        char[] arr1 = s1.toCharArray();\n        char[] arr2 = s2.toCharArray();\n        Arrays.sort(arr1);\n        Arrays.sort(arr2);\n        return Arrays.equals(arr1, arr2);\n    }\n}"
+  },
+  "isLeapYear": {
+    "description": "Check if a year is a leap year.",
+    "code": "public class DateUtils {\n    public static boolean isLeapYear(int year) {\n        if (year % 4 != 0) return false;\n        if (year % 100 != 0) return true;\n        if (year % 400 != 0) return false;\n        return true;\n    }\n}"
+  },
+  "isPerfectNumber": {
+    "description": "Check if a number is perfect (sum of proper divisors equals the number).",
+    "code": "public class NumberUtils {\n    public static boolean isPerfectNumber(int n) {\n        int sum = 0;\n        for (int i = 1; i < n; i++) {\n            if (n % i == 0) sum += i;\n        }\n        return sum == n;\n    }\n}"
+  },
+  "isPowerOfTwo": {
+    "description": "Check if a number is a power of 2 using bitwise operations, useful for low-level programming.",
+    "code": "public class NumberUtils {\n    public static boolean isPowerOfTwo(int n) {\n        return n > 0 && (n & (n - 1)) == 0;\n    }\n}"
+  },
+  "isPrime": {
+    "description": "Check if a number is prime, useful for mathematical computations.",
+    "code": "public class NumberUtils {\n    public static boolean isPrime(int n) {\n        if (n < 2) return false;\n        for (int i = 2; i <= Math.sqrt(n); i++) {\n            if (n % i == 0) return false;\n        }\n        return true;\n    }\n}"
+  },
+  "isSubset": {
+    "description": "Check if one list is a subset of another.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> boolean isSubset(List<T> list1, List<T> list2) {\n        return new HashSet<>(list2).containsAll(list1);\n    }\n}"
+  },
+  "iterateTwoLists": {
+    "description": "Iterate over two lists simultaneously.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T, U> void iterateTwoLists(List<T> list1, List<U> list2, BiConsumer<T, U> action) {\n        Iterator<T> iter1 = list1.iterator();\n        Iterator<U> iter2 = list2.iterator();\n        while (iter1.hasNext() && iter2.hasNext()) {\n            action.accept(iter1.next(), iter2.next());\n        }\n    }\n\n    public interface BiConsumer<T, U> {\n        void accept(T t, U u);\n    }\n}"
+  },
+  "jsonToQuery": {
+    "description": "Convert a dictionary to a URL query string for mobile API requests.",
+    "code": "import java.net.URLEncoder;\nimport java.nio.charset.StandardCharsets;\nimport java.util.*;\n\npublic class HttpUtils {\n    public static String jsonToQuery(Map<String, String> data) {\n        StringBuilder query = new StringBuilder();\n        for (Map.Entry<String, String> entry : data.entrySet()) {\n            if (query.length() > 0) query.append(\"&\");\n            query.append(URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8))\n                 .append(\"=\")\n                 .append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));\n        }\n        return query.toString();\n    }\n}"
+  },
+  "kineticEnergy": {
+    "description": "Calculate kinetic energy using KE = (1/2)mv^2 (physics).",
+    "code": "public class PhysicsUtils {\n    public static double kineticEnergy(double m, double v) {\n        return 0.5 * m * v * v;\n    }\n}"
+  },
+  "lcm": {
+    "description": "Calculate the least common multiple of two numbers using gcd.",
+    "code": "public class MathUtils {\n    public static int gcd(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return Math.abs(a);\n    }\n\n    public static int lcm(int a, int b) {\n        if (a == 0 || b == 0) return 0;\n        return Math.abs(a * b) / gcd(a, b);\n    }\n}"
+  },
+  "linearInterpolation": {
+    "description": "Perform linear interpolation between two points (x0, y0) and (x1, y1) at point x.",
+    "code": "public class MathUtils {\n    public static double linearInterpolation(double x0, double y0, double x1, double y1, double x) {\n        if (x1 == x0) throw new IllegalArgumentException(\"x1 cannot equal x0\");\n        return y0 + (y1 - y0) * (x - x0) / (x1 - x0);\n    }\n}"
+  },
+  "linearSearchMultiple": {
+    "description": "Find all indices of a target value in a list.",
+    "code": "import java.util.*;\n\npublic class SearchUtils {\n    public static List<Integer> linearSearchMultiple(int[] arr, int target) {\n        List<Integer> indices = new ArrayList<>();\n        for (int i = 0; i < arr.length; i++) {\n            if (arr[i] == target) indices.add(i);\n        }\n        return indices;\n    }\n}"
+  },
+  "listToDict": {
+    "description": "Convert two lists into a dictionary (keys and values).",
+    "code": "import java.util.*;\n\npublic class MapUtils {\n    public static <K, V> Map<K, V> listToDict(List<K> keys, List<V> values) {\n        Map<K, V> dict = new HashMap<>();\n        for (int i = 0; i < Math.min(keys.size(), values.size()); i++) {\n            dict.put(keys.get(i), values.get(i));\n        }\n        return dict;\n    }\n}"
+  },
+  "logToFile": {
+    "description": "Log messages to a file with timestamps for debugging.",
+    "code": "import java.io.*;\nimport java.time.*;\nimport java.time.format.*;\n\npublic class FileUtils {\n    public static void logToFile(String message, String filename) throws IOException {\n        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(\"yyyy-MM-dd HH:mm:ss\");\n        String timestamp = LocalDateTime.now().format(formatter);\n        try (FileWriter fw = new FileWriter(filename, true)) {\n            fw.write(String.format(\"[%s] %s%n\", timestamp, message));\n        }\n    }\n    public static void logToFile(String message) throws IOException {\n        logToFile(message, \"log.txt\");\n    }\n}"
+  },
+  "loopReverse": {
+    "description": "Loop over a list in reverse.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> void loopReverse(List<T> list, Consumer<T> action) {\n        for (int i = list.size() - 1; i >= 0; i--) {\n            action.accept(list.get(i));\n        }\n    }\n\n    public interface Consumer<T> {\n        void accept(T t);\n    }\n}"
+  },
+  "loopWithIndex": {
+    "description": "Loop over a list with an index.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> void loopWithIndex(List<T> list, BiConsumer<Integer, T> action) {\n        for (int i = 0; i < list.size(); i++) {\n            action.accept(i, list.get(i));\n        }\n    }\n\n    public interface BiConsumer<T, U> {\n        void accept(T t, U u);\n    }\n}"
+  },
+  "massToMole": {
+    "description": "Convert mass to moles using moles = mass / molar_mass (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double massToMole(double mass, double molarMass) {\n        if (molarMass <= 0) throw new IllegalArgumentException(\"Molar mass must be positive\");\n        return mass / molarMass;\n    }\n}"
+  },
+  "matrixAdd": {
+    "description": "Add two matrices of the same dimensions, useful for mathematical computations.",
+    "code": "public class MatrixUtils {\n    public static double[][] matrixAdd(double[][] mat1, double[][] mat2) {\n        if (mat1.length != mat2.length || mat1[0].length != mat2[0].length)\n            throw new IllegalArgumentException(\"Matrices must have the same dimensions\");\n        double[][] result = new double[mat1.length][mat1[0].length];\n        for (int i = 0; i < mat1.length; i++) {\n            for (int j = 0; j < mat1[0].length; j++) {\n                result[i][j] = mat1[i][j] + mat2[i][j];\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "matrixMultiply": {
+    "description": "Multiply two matrices, useful for mathematical computations.",
+    "code": "public class MatrixUtils {\n    public static double[][] matrixMultiply(double[][] mat1, double[][] mat2) {\n        if (mat1[0].length != mat2.length)\n            throw new IllegalArgumentException(\"Matrix dimensions must be compatible for multiplication\");\n        double[][] result = new double[mat1.length][mat2[0].length];\n        for (int i = 0; i < mat1.length; i++) {\n            for (int j = 0; j < mat2[0].length; j++) {\n                for (int k = 0; k < mat2.length; k++) {\n                    result[i][j] += mat1[i][k] * mat2[k][j];\n                }\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "matrixSubtract": {
+    "description": "Subtract two matrices of the same dimensions, useful for mathematical computations.",
+    "code": "public class MatrixUtils {\n    public static double[][] matrixSubtract(double[][] mat1, double[][] mat2) {\n        if (mat1.length != mat2.length || mat1[0].length != mat2[0].length)\n            throw new IllegalArgumentException(\"Matrices must have the same dimensions\");\n        double[][] result = new double[mat1.length][mat1[0].length];\n        for (int i = 0; i < mat1.length; i++) {\n            for (int j = 0; j < mat1[0].length; j++) {\n                result[i][j] = mat1[i][j] - mat2[i][j];\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "matrixTranspose": {
+    "description": "Transpose a matrix (swap rows and columns).",
+    "code": "public class MatrixUtils {\n    public static double[][] transposeMatrix(double[][] matrix) {\n        double[][] result = new double[matrix[0].length][matrix.length];\n        for (int i = 0; i < matrix.length; i++) {\n            for (int j = 0; j < matrix[0].length; j++) {\n                result[j][i] = matrix[i][j];\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "memoize": {
+    "description": "Create a memoization decorator for caching function results.",
+    "code": "import java.util.*;\n\npublic class FunctionUtils {\n    public interface Function<R> {\n        R apply(Object... args);\n    }\n\n    public static <R> Function<R> memoize(Function<R> func) {\n        Map<List<Object>, R> cache = new HashMap<>();\n        return args -> {\n            List<Object> key = Arrays.asList(args);\n            return cache.computeIfAbsent(key, k -> func.apply(args));\n        };\n    }\n}"
+  },
+  "mergeSortedLists": {
+    "description": "Merge two sorted lists into a single sorted list.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static List<Integer> mergeSortedLists(List<Integer> list1, List<Integer> list2) {\n        List<Integer> merged = new ArrayList<>();\n        int i = 0, j = 0;\n        while (i < list1.size() && j < list2.size()) {\n            if (list1.get(i) <= list2.get(j)) {\n                merged.add(list1.get(i++));\n            } else {\n                merged.add(list2.get(j++));\n            }\n        }\n        merged.addAll(list1.subList(i, list1.size()));\n        merged.addAll(list2.subList(j, list2.size()));\n        return merged;\n    }\n}"
+  },
+  "mergeTwoDicts": {
+    "description": "Merge two dictionaries, with the second overriding the first.",
+    "code": "import java.util.*;\n\npublic class MapUtils {\n    public static <K, V> Map<K, V> mergeTwoDicts(Map<K, V> dict1, Map<K, V> dict2) {\n        Map<K, V> merged = new HashMap<>(dict1);\n        merged.putAll(dict2);\n        return merged;\n    }\n}"
+  },
+  "molality": {
+    "description": "Calculate molality using m = moles / mass_of_solvent (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double molality(double moles, double massOfSolvent) {\n        if (massOfSolvent <= 0) throw new IllegalArgumentException(\"Mass of solvent must be positive\");\n        return moles / massOfSolvent;\n    }\n}"
+  },
+  "molarMass": {
+    "description": "Calculate the molar mass of a compound given its formula (e.g., 'H2O'), useful in chemistry.",
+    "code": "import java.util.*;\n\npublic class ChemistryUtils {\n    public static double molarMass(String formula) {\n        Map<String, Double> atomicMasses = new HashMap<>();\n        atomicMasses.put(\"H\", 1.008);\n        atomicMasses.put(\"O\", 15.999);\n        atomicMasses.put(\"C\", 12.011);\n        atomicMasses.put(\"N\", 14.007);\n\n        double mass = 0;\n        StringBuilder element = new StringBuilder();\n        StringBuilder number = new StringBuilder();\n        for (char ch : (formula + \" \").toCharArray()) {\n            if (Character.isLetter(ch)) {\n                if (element.length() > 0) {\n                    int count = number.length() > 0 ? Integer.parseInt(number.toString()) : 1;\n                    mass += atomicMasses.getOrDefault(element.toString(), 0.0) * count;\n                }\n                element = new StringBuilder(String.valueOf(ch));\n                number = new StringBuilder();\n            } else if (Character.isDigit(ch)) {\n                number.append(ch);\n            }\n        }\n        return mass;\n    }\n}"
+  },
+  "molarity": {
+    "description": "Calculate molarity using M = moles / volume (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double molarity(double moles, double volume) {\n        if (volume <= 0) throw new IllegalArgumentException(\"Volume must be positive\");\n        return moles / volume;\n    }\n}"
+  },
+  "moleToMass": {
+    "description": "Convert moles to mass using mass = moles * molar_mass (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double moleToMass(double moles, double molarMass) {\n        if (molarMass <= 0) throw new IllegalArgumentException(\"Molar mass must be positive\");\n        return moles * molarMass;\n    }\n}"
+  },
+  "momentum": {
+    "description": "Calculate momentum using p = mv (physics).",
+    "code": "public class PhysicsUtils {\n    public static double momentum(double m, double v) {\n        return m * v;\n    }\n}"
+  },
+  "nestedDictUpdate": {
+    "description": "Update a nested dictionary with new values recursively.",
+    "code": "import java.util.*;\n\npublic class MapUtils {\n    @SuppressWarnings(\"unchecked\")\n    public static Map<String, Object> nestedDictUpdate(Map<String, Object> d, Map<String, Object> u) {\n        for (Map.Entry<String, Object> entry : u.entrySet()) {\n            String key = entry.getKey();\n            Object value = entry.getValue();\n            if (value instanceof Map && d.containsKey(key) && d.get(key) instanceof Map) {\n                d.put(key, nestedDictUpdate((Map<String, Object>) d.get(key), (Map<String, Object>) value));\n            } else {\n                d.put(key, value);\n            }\n        }\n        return d;\n    }\n}"
+  },
+  "newtonRaphson": {
+    "description": "Find a root of a function using the Newton-Raphson method.",
+    "code": "public class MathUtils {\n    public interface Function {\n        double apply(double x);\n    }\n\n    public static double newtonRaphson(Function f, Function df, double x0, double tol, int maxIter) {\n        double x = x0;\n        for (int i = 0; i < maxIter; i++) {\n            double fx = f.apply(x);\n            if (Math.abs(fx) < tol) return x;\n            double dfx = df.apply(x);\n            if (dfx == 0) throw new ArithmeticException(\"Derivative is zero\");\n            x -= fx / dfx;\n        }\n        return x;\n    }\n    public static double newtonRaphson(Function f, Function df, double x0) {\n        return newtonRaphson(f, df, x0, 1e-6, 100);\n    }\n}"
+  },
+  "nthPrime": {
+    "description": "Find the nth prime number, useful for mathematical computations.",
+    "code": "public class NumberUtils {\n    public static int nthPrime(int n) {\n        if (n < 1) throw new IllegalArgumentException(\"n must be positive\");\n        int count = 0, num = 1;\n        while (count < n) {\n            num++;\n            if (isPrime(num)) count++;\n        }\n        return num;\n    }\n\n    private static boolean isPrime(int n) {\n        if (n < 2) return false;\n        for (int i = 2; i <= Math.sqrt(n); i++) {\n            if (n % i == 0) return false;\n        }\n        return true;\n    }\n}"
+  },
+  "octalToDecimal": {
+    "description": "Convert an octal string to decimal number.",
+    "code": "public class NumberConverter {\n    public static int octalToDecimal(String octalStr) {\n        return Integer.parseInt(octalStr, 8);\n    }\n}"
+  },
+  "ohmsLaw": {
+    "description": "Calculate voltage using Ohm's Law V = IR (physics).",
+    "code": "public class PhysicsUtils {\n    public static double ohmsLaw(double current, double resistance) {\n        return current * resistance;\n    }\n}"
+  },
+  "parseJsonFile": {
+    "description": "Parse a JSON file into a dictionary.",
+    "code": "import java.io.*;\nimport com.google.gson.Gson;\n\npublic class FileUtils {\n    public static Map<String, Object> parseJsonFile(String filePath) throws IOException {\n        Gson gson = new Gson();\n        try (FileReader reader = new FileReader(filePath)) {\n            return gson.fromJson(reader, Map.class);\n        }\n    }\n}"
+  },
+  "parseQueryString": {
+    "description": "Parse a URL query string into a dictionary for mobile API requests.",
+    "code": "import java.util.*;\n\npublic class HttpUtils {\n    public static Map<String, String> parseQueryString(String query) {\n        Map<String, String> params = new HashMap<>();\n        if (query == null || query.isEmpty()) return params;\n        String[] pairs = query.split(\"&\");\n        for (String pair : pairs) {\n            String[] keyValue = pair.split(\"=\", 2);\n            if (keyValue.length == 2) {\n                params.put(keyValue[0], keyValue[1]);\n            }\n        }\n        return params;\n    }\n}"
+  },
+  "pascalTriangle": {
+    "description": "Generate Pascal's triangle up to n rows.",
+    "code": "import java.util.*;\n\npublic class MathUtils {\n    public static List<List<Integer>> pascalTriangle(int n) {\n        List<List<Integer>> triangle = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            List<Integer> row = new ArrayList<>();\n            for (int j = 0; j <= i; j++) {\n                if (j == 0 || j == i) {\n                    row.add(1);\n                } else {\n                    row.add(triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j));\n                }\n            }\n            triangle.add(row);\n        }\n        return triangle;\n    }\n}"
+  },
+  "period": {
+    "description": "Calculate period using T = 1 / f (physics).",
+    "code": "public class PhysicsUtils {\n    public static double period(double frequency) {\n        if (frequency == 0) throw new IllegalArgumentException(\"Frequency cannot be zero\");\n        return 1.0 / frequency;\n    }\n}"
+  },
+  "permutation": {
+    "description": "Calculate the number of permutations P(n, k).",
+    "code": "public class MathUtils {\n    public static long permutation(int n, int k) {\n        if (k > n) return 0;\n        if (k == 0) return 1;\n        long p = 1;\n        for (int i = 0; i < k; i++) {\n            p *= (n - i);\n        }\n        return p;\n    }\n}"
+  },
+  "phFromHydrogen": {
+    "description": "Calculate pH from hydrogen ion concentration (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double phFromHydrogen(double hydrogenIon) {\n        if (hydrogenIon <= 0) throw new IllegalArgumentException(\"Hydrogen ion concentration must be positive\");\n        return -Math.log10(hydrogenIon);\n    }\n}"
+  },
+  "pixelToHex": {
+    "description": "Convert RGB pixel values to a hexadecimal color code for game development.",
+    "code": "public class ColorUtils {\n    public static String pixelToHex(int r, int g, int b) {\n        if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)\n            throw new IllegalArgumentException(\"RGB values must be between 0 and 255\");\n        return String.format(\"%02X%02X%02X\", r, g, b);\n    }\n}"
+  },
+  "potentialEnergy": {
+    "description": "Calculate potential energy using PE = mgh (physics).",
+    "code": "public class PhysicsUtils {\n    public static double potentialEnergy(double m, double h, double g) {\n        return m * g * h;\n    }\n    public static double potentialEnergy(double m, double h) {\n        return potentialEnergy(m, h, 9.81);\n    }\n}"
+  },
+  "power": {
+    "description": "Calculate power using P = W / t (physics).",
+    "code": "public class PhysicsUtils {\n    public static double power(double work, double time) {\n        if (time == 0) throw new IllegalArgumentException(\"Time cannot be zero\");\n        return work / time;\n    }\n}"
+  },
+  "prefixToInfix": {
+    "description": "Convert a prefix expression to infix using a stack.",
+    "code": "import java.util.*;\n\npublic class ExpressionUtils {\n    public static String prefixToInfix(String prefix) {\n        Stack<String> stack = new Stack<>();\n        String[] tokens = prefix.split(\"\\\\s+\");\n        for (int i = tokens.length - 1; i >= 0; i--) {\n            String token = tokens[i];\n            if (isOperator(token)) {\n                String op1 = stack.pop();\n                String op2 = stack.pop();\n                String expr = \"(\" + op1 + token + op2 + \")\";\n                stack.push(expr);\n            } else {\n                stack.push(token);\n            }\n        }\n        return stack.pop();\n    }\n\n    private static boolean isOperator(String token) {\n        return token.equals(\"+\") || token.equals(\"-\") || token.equals(\"*\") || token.equals(\"/\");\n    }\n}"
+  },
+  "prefixToPostfix": {
+    "description": "Convert a prefix expression to postfix using a stack.",
+    "code": "import java.util.*;\n\npublic class ExpressionUtils {\n    public static String prefixToPostfix(String prefix) {\n        Stack<String> stack = new Stack<>();\n        String[] tokens = prefix.split(\"\\\\s+\");\n        for (int i = tokens.length - 1; i >= 0; i--) {\n            String token = tokens[i];\n            if (isOperator(token)) {\n                String op1 = stack.pop();\n                String op2 = stack.pop();\n                String expr = op1 + \" \" + op2 + \" \" + token;\n                stack.push(expr);\n            } else {\n                stack.push(token);\n            }\n        }\n        return stack.pop();\n    }\n\n    private static boolean isOperator(String token) {\n        return token.equals(\"+\") || token.equals(\"-\") || token.equals(\"*\") || token.equals(\"/\");\n    }\n}"
+  },
+  "pressure": {
+    "description": "Calculate pressure using P = F / A (physics).",
+    "code": "public class PhysicsUtils {\n    public static double pressure(double force, double area) {\n        if (area == 0) throw new IllegalArgumentException(\"Area cannot be zero\");\n        return force / area;\n    }\n}"
+  },
+  "primeFactors": {
+    "description": "Find the prime factors of a number, useful for mathematical computations.",
+    "code": "import java.util.*;\n\npublic class NumberUtils {\n    public static List<Integer> primeFactors(int n) {\n        List<Integer> factors = new ArrayList<>();\n        for (int i = 2; i <= n; i++) {\n            while (n % i == 0) {\n                factors.add(i);\n                n /= i;\n            }\n        }\n        return factors;\n    }\n}"
+  },
+  "quadraticRoots": {
+    "description": "Find the roots of a quadratic equation ax^2 + bx + c = 0.",
+    "code": "public class MathUtils {\n    public static double[] quadraticRoots(double a, double b, double c) {\n        double discriminant = b * b - 4 * a * c;\n        if (discriminant < 0) throw new ArithmeticException(\"No real roots exist\");\n        double sqrtDisc = Math.sqrt(discriminant);\n        return new double[] {\n            (-b + sqrtDisc) / (2 * a),\n            (-b - sqrtDisc) / (2 * a)\n        };\n    }\n}"
+  },
+  "randomChoice": {
+    "description": "Select a random element from a list.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    private static final Random rand = new Random();\n\n    public static <T> T randomChoice(List<T> list) {\n        if (list.isEmpty()) throw new IllegalArgumentException(\"List cannot be empty\");\n        return list.get(rand.nextInt(list.size()));\n    }\n}"
+  },
+  "randomSample": {
+    "description": "Select k random elements from a list without replacement.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    private static final Random rand = new Random();\n\n    public static <T> List<T> randomSample(List<T> list, int k) {\n        if (k > list.size()) throw new IllegalArgumentException(\"Sample size cannot exceed list size\");\n        List<T> copy = new ArrayList<>(list);\n        List<T> sample = new ArrayList<>();\n        for (int i = 0; i < k; i++) {\n            int index = rand.nextInt(copy.size());\n            sample.add(copy.remove(index));\n        }\n        return sample;\n    }\n}"
+  },
+  "randomShuffle": {
+    "description": "Shuffle a list randomly.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    private static final Random rand = new Random();\n\n    public static <T> void randomShuffle(List<T> list) {\n        for (int i = list.size() - 1; i > 0; i--) {\n            int j = rand.nextInt(i + 1);\n            T temp = list.get(i);\n            list.set(i, list.get(j));\n            list.set(j, temp);\n        }\n    }\n}"
+  },
+  "rateOfReaction": {
+    "description": "Calculate the rate of reaction using rate = delta_concentration / delta_time (chemistry).",
+    "code": "public class ChemistryUtils {\n    public static double rateOfReaction(double deltaConcentration, double deltaTime) {\n        if (deltaTime <= 0) throw new IllegalArgumentException(\"Time change must be positive\");\n        return deltaConcentration / deltaTime;\n    }\n}"
+  },
+  "readBinaryFile": {
+    "description": "Read a binary file and return its bytes.",
+    "code": "import java.io.*;\n\npublic class FileUtils {\n    public static byte[] readBinaryFile(String filePath) throws IOException {\n        File file = new File(filePath);\n        byte[] data = new byte[(int) file.length()];\n        try (FileInputStream fis = new FileInputStream(file)) {\n            fis.read(data);\n        }\n        return data;\n    }\n}"
+  },
+  "readFileLines": {
+    "description": "Read a file and return its lines as a list.",
+    "code": "import java.io.*;\nimport java.util.*;\n\npublic class FileUtils {\n    public static List<String> readFileLines(String filePath) throws IOException {\n        List<String> lines = new ArrayList<>();\n        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {\n            String line;\n            while ((line = br.readLine()) != null) {\n                lines.add(line);\n            }\n        }\n        return lines;\n    }\n}"
+  },
+  "removeDuplicates": {
+    "description": "Remove duplicates from a list while preserving order.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> List<T> removeDuplicates(List<T> list) {\n        return new ArrayList<>(new LinkedHashSet<>(list));\n    }\n}"
+  },
+  "replaceMultiple": {
+    "description": "Replace multiple substrings in a string using a dictionary.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static String replaceMultiple(String s, Map<String, String> replacements) {\n        String result = s;\n        for (Map.Entry<String, String> entry : replacements.entrySet()) {\n            result = result.replace(entry.getKey(), entry.getValue());\n        }\n        return result;\n    }\n}"
+  },
+  "reverseString": {
+    "description": "Reverse a string.",
+    "code": "public class StringUtils {\n    public static String reverseString(String s) {\n        return new StringBuilder(s).reverse().toString();\n    }\n}"
+  },
+  "rotateList": {
+    "description": "Rotate a list by k positions (positive k for right, negative for left).",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> List<T> rotateList(List<T> list, int k) {\n        List<T> rotated = new ArrayList<>(list);\n        int n = list.size();\n        if (n == 0) return rotated;\n        k = k % n;\n        if (k < 0) k += n;\n        Collections.rotate(rotated, k);\n        return rotated;\n    }\n}"
+  },
+  "runLengthDecode": {
+    "description": "Decode a run-length encoded string (e.g., '3a2b' -> 'aaabb').",
+    "code": "public class StringUtils {\n    public static String runLengthDecode(String encoded) {\n        StringBuilder result = new StringBuilder();\n        StringBuilder number = new StringBuilder();\n        for (char ch : encoded.toCharArray()) {\n            if (Character.isDigit(ch)) {\n                number.append(ch);\n            } else {\n                int count = number.length() > 0 ? Integer.parseInt(number.toString()) : 1;\n                result.append(String.valueOf(ch).repeat(count));\n                number = new StringBuilder();\n            }\n        }\n        return result.toString();\n    }\n}"
+  },
+  "runLengthEncode": {
+    "description": "Run-length encode a string (e.g., 'aaabb' -> '3a2b').",
+    "code": "public class StringUtils {\n    public static String runLengthEncode(String s) {\n        if (s.isEmpty()) return \"\";\n        StringBuilder result = new StringBuilder();\n        int count = 1;\n        char current = s.charAt(0);\n        for (int i = 1; i < s.length(); i++) {\n            if (s.charAt(i) == current) {\n                count++;\n            } else {\n                if (count > 1) result.append(count);\n                result.append(current);\n                current = s.charAt(i);\n                count = 1;\n            }\n        }\n        if (count > 1) result.append(count);\n        result.append(current);\n        return result.toString();\n    }\n}"
+  },
+  "setBit": {
+    "description": "Set a specific bit in a number to 1, useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int setBit(int n, int position) {\n        return n | (1 << position);\n    }\n}"
+  },
+  "sieveOfEratosthenes": {
+    "description": "Generate all prime numbers up to n using the Sieve of Eratosthenes.",
+    "code": "import java.util.*;\n\npublic class NumberUtils {\n    public static List<Integer> sieveOfEratosthenes(int n) {\n        boolean[] isPrime = new boolean[n + 1];\n        Arrays.fill(isPrime, true);\n        isPrime[0] = isPrime[1] = false;\n        for (int i = 2; i * i <= n; i++) {\n            if (isPrime[i]) {\n                for (int j = i * i; j <= n; j += i) {\n                    isPrime[j] = false;\n                }\n            }\n        }\n        List<Integer> primes = new ArrayList<>();\n        for (int i = 2; i <= n; i++) {\n            if (isPrime[i]) primes.add(i);\n        }\n        return primes;\n    }\n}"
+  },
+  "singletonPattern": {
+    "description": "Implement a singleton pattern for a class in OOP.",
+    "code": "public class Singleton {\n    private static Singleton instance;\n\n    private Singleton() {}\n\n    public static Singleton getInstance() {\n        if (instance == null) {\n            instance = new Singleton();\n        }\n        return instance;\n    }\n\n    public void doSomething() {\n        System.out.println(\"Singleton instance doing something\");\n    }\n}"
+  },
+  "snakeToCamel": {
+    "description": "Convert a snake_case string to camelCase.",
+    "code": "public class StringUtils {\n    public static String snakeToCamel(String s) {\n        StringBuilder result = new StringBuilder();\n        boolean capitalizeNext = false;\n        for (char ch : s.toCharArray()) {\n            if (ch == '_') {\n                capitalizeNext = true;\n            } else {\n                result.append(capitalizeNext ? Character.toUpperCase(ch) : ch);\n                capitalizeNext = false;\n            }\n        }\n        return result.toString();\n    }\n}"
+  },
+  "sortDictByValue": {
+    "description": "Sort a dictionary by its values.",
+    "code": "import java.util.*;\n\npublic class MapUtils {\n    public static <K, V extends Comparable<V>> Map<K, V> sortDictByValue(Map<K, V> dict) {\n        List<Map.Entry<K, V>> entries = new ArrayList<>(dict.entrySet());\n        entries.sort(Map.Entry.comparingByValue());\n        Map<K, V> sorted = new LinkedHashMap<>();\n        for (Map.Entry<K, V> entry : entries) {\n            sorted.put(entry.getKey(), entry.getValue());\n        }\n        return sorted;\n    }\n}"
+  },
+  "sortListOfDicts": {
+    "description": "Sort a list of dictionaries by a specific key.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static List<Map<String, Object>> sortListOfDicts(List<Map<String, Object>> list, String key) {\n        List<Map<String, Object>> sortedList = new ArrayList<>(list);\n        sortedList.sort((a, b) -> {\n            Object valA = a.get(key);\n            Object valB = b.get(key);\n            if (valA instanceof Comparable && valB instanceof Comparable) {\n                return ((Comparable) valA).compareTo(valB);\n            }\n            return 0;\n        });\n        return sortedList;\n    }\n}"
+  },
+  "splitString": {
+    "description": "Split a string into a list based on a delimiter.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static List<String> splitString(String s, String delimiter) {\n        return Arrays.asList(s.split(delimiter));\n    }\n}"
+  },
+  "squareMatrixRotate": {
+    "description": "Rotate a square matrix 90 degrees clockwise in place.",
+    "code": "public class MatrixUtils {\n    public static void squareMatrixRotate(int[][] matrix) {\n        int n = matrix.length;\n        if (n == 0 || matrix[0].length != n) throw new IllegalArgumentException(\"Matrix must be square\");\n        for (int i = 0; i < n; i++) {\n            for (int j = i; j < n; j++) {\n                int temp = matrix[i][j];\n                matrix[i][j] = matrix[j][i];\n                matrix[j][i] = temp;\n            }\n        }\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n / 2; j++) {\n                int temp = matrix[i][j];\n                matrix[i][j] = matrix[i][n - 1 - j];\n                matrix[i][n - 1 - j] = temp;\n            }\n        }\n    }\n}"
+  },
+  "standardDeviation": {
+    "description": "Calculate the standard deviation of a list of numbers.",
+    "code": "import java.util.*;\n\npublic class StatisticsUtils {\n    public static double standardDeviation(List<Double> numbers) {\n        if (numbers.isEmpty()) throw new IllegalArgumentException(\"List cannot be empty\");\n        double mean = numbers.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);\n        double sumOfSquares = numbers.stream().mapToDouble(x -> Math.pow(x - mean, 2)).sum();\n        return Math.sqrt(sumOfSquares / numbers.size());\n    }\n}"
+  },
+  "stream_filter_map": {
+    "description": "Use streams to filter and map a list of strings.",
+    "code": "List<String> list = Arrays.asList(\"apple\", \"banana\", \"cherry\");\nList<String> result = list.stream()\n    .filter(s -> s.startsWith(\"a\"))\n    .map(String::toUpperCase)\n    .collect(Collectors.toList());"
+  },
+  "stringToList": {
+    "description": "Convert a string to a list of characters.",
+    "code": "import java.util.*;\n\npublic class StringUtils {\n    public static List<Character> stringToList(String s) {\n        List<Character> charList = new ArrayList<>();\n        for (char c : s.toCharArray()) {\n            charList.add(c);\n        }\n        return charList;\n    }\n}"
+  },
+  "sumOfSquares": {
+    "description": "Calculate the sum of squares of numbers from 1 to n.",
+    "code": "public class MathUtils {\n    public static long sumOfSquares(int n) {\n        if (n < 0) throw new IllegalArgumentException(\"n must be non-negative\");\n        long sum = 0;\n        for (int i = 1; i <= n; i++) {\n            sum += i * i;\n        }\n        return sum;\n    }\n}"
+  },
+  "temperatureConvert": {
+    "description": "Convert temperature between Celsius, Fahrenheit, and Kelvin.",
+    "code": "public class PhysicsUtils {\n    public static double celsiusToFahrenheit(double celsius) {\n        return celsius * 9 / 5 + 32;\n    }\n\n    public static double celsiusToKelvin(double celsius) {\n        return celsius + 273.15;\n    }\n\n    public static double fahrenheitToCelsius(double fahrenheit) {\n        return (fahrenheit - 32) * 5 / 9;\n    }\n\n    public static double fahrenheitToKelvin(double fahrenheit) {\n        return celsiusToKelvin(fahrenheitToCelsius(fahrenheit));\n    }\n\n    public static double kelvinToCelsius(double kelvin) {\n        return kelvin - 273.15;\n    }\n\n    public static double kelvinToFahrenheit(double kelvin) {\n        return celsiusToFahrenheit(kelvinToCelsius(kelvin));\n    }\n}"
+  },
+  "thread_example": {
+    "description": "Create and start a thread using Runnable.",
+    "code": "Thread thread = new Thread(() -> {\n    System.out.println(\"Thread is running\");\n});\nthread.start();"
+  },
+  "timeDilation": {
+    "description": "Calculate time dilation using t' = t / sqrt(1 - v^2/c^2) (physics, special relativity).",
+    "code": "public class PhysicsUtils {\n    public static double timeDilation(double t, double v, double c) {\n        if (v >= c) throw new IllegalArgumentException(\"Velocity cannot be >= speed of light\");\n        return t / Math.sqrt(1 - (v * v) / (c * c));\n    }\n    public static double timeDilation(double t, double v) {\n        return timeDilation(t, v, 299792458);\n    }\n}"
+  },
+  "toBinary": {
+    "description": "Convert a decimal number to binary string (alternative implementation).",
+    "code": "public class NumberConverter {\n    public static String toBinary(int n) {\n        if (n == 0) return \"0\";\n        StringBuilder binary = new StringBuilder();\n        while (n > 0) {\n            binary.insert(0, n % 2);\n            n /= 2;\n        }\n        return binary.toString();\n    }\n}"
+  },
+  "toggleBit": {
+    "description": "Toggle a specific bit in a number (0 to 1 or 1 to 0), useful for low-level programming.",
+    "code": "public class BinaryUtils {\n    public static int toggleBit(int n, int position) {\n        return n ^ (1 << position);\n    }\n}"
+  },
+  "transposeMatrix": {
+    "description": "Transpose a matrix (swap rows and columns), alternative implementation.",
+    "code": "public class MatrixUtils {\n    public static double[][] transposeMatrix(double[][] matrix) {\n        double[][] result = new double[matrix[0].length][matrix.length];\n        for (int i = 0; i < matrix.length; i++) {\n            for (int j = 0; j < matrix[0].length; j++) {\n                result[j][i] = matrix[i][j];\n            }\n        }\n        return result;\n    }\n}"
+  },
+  "truncateString": {
+    "description": "Truncate a string to a specified length and add ellipsis if needed.",
+    "code": "public class StringUtils {\n    public static String truncateString(String s, int maxLength) {\n        if (s.length() <= maxLength) return s;\n        return s.substring(0, maxLength - 3) + \"...\";\n    }\n}"
+  },
+  "uniqueElements": {
+    "description": "Get unique elements from a list while preserving order.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T> List<T> uniqueElements(List<T> list) {\n        return new ArrayList<>(new LinkedHashSet<>(list));\n    }\n}"
+  },
+  "validateEmail": {
+    "description": "Validate an email address using a simple regex pattern.",
+    "code": "public class StringUtils {\n    public static boolean validateEmail(String email) {\n        String regex = \"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}$\";\n        return email.matches(regex);\n    }\n}"
+  },
+  "validateIpAddress": {
+    "description": "Validate an IPv4 address using a regex pattern.",
+    "code": "public class NetworkUtils {\n    public static boolean validateIpAddress(String ip) {\n        String regex = \"^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$\";\n        return ip.matches(regex);\n    }\n}"
+  },
+  "validatePhoneNumber": {
+    "description": "Validate a phone number using a simple regex pattern (e.g., US format).",
+    "code": "public class StringUtils {\n    public static boolean validatePhoneNumber(String phone) {\n        String regex = \"^\\\\(?([0-9]{3})\\\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$\";\n        return phone.matches(regex);\n    }\n}"
+  },
+  "velocity": {
+    "description": "Calculate velocity using v = s / t (physics).",
+    "code": "public class PhysicsUtils {\n    public static double velocity(double distance, double time) {\n        if (time == 0) throw new IllegalArgumentException(\"Time cannot be zero\");\n        return distance / time;\n    }\n}"
+  },
+  "volumeOfCone": {
+    "description": "Calculate the volume of a cone using V = (1/3) * pi * r^2 * h (geometry).",
+    "code": "public class GeometryUtils {\n    public static double volumeOfCone(double radius, double height) {\n        return (1.0 / 3.0) * Math.PI * radius * radius * height;\n    }\n}"
+  },
+  "volumeOfCylinder": {
+    "description": "Calculate the volume of a cylinder using V = pi * r^2 * h (geometry).",
+    "code": "public class GeometryUtils {\n    public static double volumeOfCylinder(double radius, double height) {\n        return Math.PI * radius * radius * height;\n    }\n}"
+  },
+  "volumeOfSphere": {
+    "description": "Calculate the volume of a sphere using V = (4/3) * pi * r^3 (geometry).",
+    "code": "public class GeometryUtils {\n    public static double volumeOfSphere(double radius) {\n        return (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);\n    }\n}"
+  },
+  "wavelength": {
+    "description": "Calculate wavelength using lambda = v / f (physics).",
+    "code": "public class PhysicsUtils {\n    public static double wavelength(double velocity, double frequency) {\n        if (frequency == 0) throw new IllegalArgumentException(\"Frequency cannot be zero\");\n        return velocity / frequency;\n    }\n}"
+  },
+  "weightedAverage": {
+    "description": "Calculate the weighted average of a list with weights.",
+    "code": "import java.util.*;\n\npublic class StatisticsUtils {\n    public static double weightedAverage(List<Double> values, List<Double> weights) {\n        if (values.size() != weights.size()) throw new IllegalArgumentException(\"Lists must have the same size\");\n        double sum = 0, weightSum = 0;\n        for (int i = 0; i < values.size(); i++) {\n            sum += values.get(i) * weights.get(i);\n            weightSum += weights.get(i);\n        }\n        if (weightSum == 0) throw new ArithmeticException(\"Sum of weights cannot be zero\");\n        return sum / weightSum;\n    }\n}"
+  },
+  "work": {
+    "description": "Calculate work using W = F * d * cos(theta) (physics).",
+    "code": "public class PhysicsUtils {\n    public static double work(double force, double distance, double theta) {\n        return force * distance * Math.cos(theta);\n    }\n}"
+  },
+  "writeBinaryFile": {
+    "description": "Write bytes to a binary file.",
+    "code": "import java.io.*;\n\npublic class FileUtils {\n    public static void writeBinaryFile(String filePath, byte[] data) throws IOException {\n        try (FileOutputStream fos = new FileOutputStream(filePath)) {\n            fos.write(data);\n        }\n    }\n}"
+  },
+  "zipLists": {
+    "description": "Zip two lists into a list of pairs.",
+    "code": "import java.util.*;\n\npublic class ListUtils {\n    public static <T, U> List<List<Object>> zipLists(List<T> list1, List<U> list2) {\n        List<List<Object>> zipped = new ArrayList<>();\n        int size = Math.min(list1.size(), list2.size());\n        for (int i = 0; i < size; i++) {\n            List<Object> pair = new ArrayList<>();\n            pair.add(list1.get(i));\n            pair.add(list2.get(i));\n            zipped.add(pair);\n        }\n        return zipped;\n    }\n}"
+  }
+}
